@@ -1,0 +1,58 @@
+// out: style.css, compress: true;
+
+@main-color: #eee;
+@main-font: "Helvetica", Arial, sans-serif;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @main-font;
+}
+
+p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+body {
+  font-size: 14px;
+}
+
+.container {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.demo {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  thead {
+    tr {
+      th {
+        border: 1px solid #333;
+        padding: 8px 16px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        border: 1px solid #333;
+        padding: 8px 16px;
+      }
+    }
+  }
+}
+
+.demo {
+  background-color: @main-color;
+  padding: 15px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}

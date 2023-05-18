@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>List2Select jQuery plugin</title>
+    <link rel="stylesheet" type="text/css" href="js/list2select/list2select.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>List2Select</h1>
+      <p>A jQuery plugin, transform list to selection useful for responsive menu</p>
+      <hr />
+      <div class="demo demo-1">
+        <h2>Demo 1: Regular use</h2>
+        <p>Please resize this window lower than 768px</p>
+        <p>Order list</p>
+        <ol>
+          <li><a href="#">list item 1</a></li>
+          <li><a href="#">list item 2</a></li>
+          <li><a href="#">list item 3</a></li>
+          <li><a href="#">list item 4</a></li>
+          <li><a href="#">list item 5</a></li>
+        </ol>
+      </div>
+      <div class="demo demo-2">
+        <h2>Demo 2: Custom insert order</h2>
+        <p>Insert before content, please resize this window lower than 768px</p>
+        <p>Unorder list</p>
+        <ul>
+          <li><a href="#">list item 1</a></li>
+          <li><a href="#">list item 2</a></li>
+          <li><a href="#">list item 3</a></li>
+          <li><a href="#">list item 4</a></li>
+          <li><a href="#">list item 5</a></li>
+        </ul>
+      </div>
+      <div class="demo options">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            <p>Include <em><strong>list2select.css</strong></em> and <em><strong>list2select.js</strong></em> in dist directory to head section of the HTML page</p>
+            <p><strong>Example</strong></p>
+            <code>
+              &#60;link rel="stylesheet" type="text/css" href="list2select/dist/list2select.css" charset="utf-8"&#62;<br />
+              &#60;script src="list2select/dist/list2select.min.js" charset="utf-8"&#62;&#60;/script&#62;
+            </code>
+            <p><small>*For the best performance the JS load script should place at the lowest position in the body section</small></p>
+          </li>
+          <li>
+            <p>Insert breakpoint class into the container of the list element for example:</p>
+            <code>
+              &#60;div class="list-container <em style="color: red">l2s-display-md</em>"&#62;<br />
+                &nbsp;&nbsp;&#60;ul&#62; <-- The default selector is set to the list<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&#60;li&#62;list item 1&#62;/li&#62;<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&#60;li&#62;list item 2&#62;/li&#62;<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&#60;li&#62;list item 3&#62;/li&#62;<br />
+                &nbsp;&nbsp;&#60;/ul&#62;<br />
+              &#60;/div&#62;<br />
+              <-- You should specific selector to place the generated select list outside the container
+            </code>
+          </li>
+        </ol>
+        <h2>Available options</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Option name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>nullOption</td>
+              <td><small>Create null option for the select list<br /><strong>Default:</strong> <em>FALSE</em></small></td>
+            </tr>
+            <tr>
+              <td>nullOptionLabel</td>
+              <td><small>Change label for the null option<br /><strong>Default:</strong> <em>"— Select an option —"</em></small></td>
+            </tr>
+            <tr>
+              <td>tabMode</td>
+              <td><small>Convert tab menu to select<br /><strong>Default:</strong> <em>FALSE</em></small></td>
+            </tr>
+            <tr>
+              <td>tabSelector</td>
+              <td><small>Selector to the tab menu<br /><strong>Default:</strong> <em>""</em></small></td>
+            </tr>
+            <tr>
+              <td>toggleDisplayWidth</td>
+              <td><small>Breakpoint to responsive<br /><strong>Default:</strong> <em>"md"</em></small></td>
+            </tr>
+            <tr>
+              <td>insertBefore</td>
+              <td><small>Method to place the generated select list<br /><strong>Default:</strong> <em>FALSE</em></small></td>
+            </tr>
+            <tr>
+              <td>placeAt</td>
+              <td><small>Custom selector to place the generated select list<br /><strong>Default:</strong> <em>""</em></small></td>
+            </tr>
+            <tr>
+              <td>childSelector</td>
+              <td><small>Custom selector to the specific elements<br /><strong>Default:</strong> <em>"li"</em></small></td>
+            </tr>
+            <tr>
+              <td>customClass</td>
+              <td><small>Define custom classes to the generated select list<br /><strong>Default:</strong> <em>""</em></small></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <script src="js/jquery-1.11.2.min.js" charset="utf-8"></script>
+    <script src="js/list2select/list2select.min.js" charset="utf-8"></script>
+    
+    <script>
+      $('.demo-1 ol').list2select({
+        'defaultOption': 'Order list',
+        'toggleDisplayWidth': 'md'
+      });
+      $('.demo-2 ul').list2select({
+        'defaultOption': 'Unorder list',
+        'toggleDisplayWidth': 'md',
+        'insertBefore': true
+      });
+    </script>
+    
+  </body>
+</html>
