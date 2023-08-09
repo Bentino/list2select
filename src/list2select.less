@@ -1,65 +1,53 @@
-// out: list2select.css, compress: true;
+// out: ../dist/list2select.css, compress: true;
 
-.l2s-display {
-	display: none !important;
+@modes: 
+  inline, block, contents, flex, grid, 
+  inline-block, inline-flex, inline-grid, inline-table, 
+  list-item, run-in, 
+  table, table-caption, table-column-group, table-header-group, table-footer-group, 
+  table-row-group, table-cell, table-column, table-row, 
+  none, initial, inherit;
+
+@sizes: {
+  xs: 0;
+  sm: 576px;
+  md: 768px;
+  lg: 992px;
+  xl: 1200px;
+  xxl: 1400px;
 }
 
-.l2s-display-sm {
-	display: none !important;
-	@media screen and (min-width: 576px) {
-		display: block !important;
-	}
+.l2s-list(@modes, @i: 1) when (@i <= length(@modes)) {
+  // extract the right name from the list and store in @display
+  @display: extract(@modes, @i);
+
+  // Begin each loop for a size
+  each(@sizes, {
+    .l2s-list-@{display}-@{key} {
+      display: none !important;
+      @media screen and (min-width: @value) {
+        display: @display !important;
+      }
+    }
+  });
+  .l2s-list(@modes, @i + 1);
 }
 
-.l2s-display-md {
-	display: none !important;
-	@media screen and (min-width: 768px) {
-		display: block !important;
-	}
+.l2s-select(@modes, @i: 1) when (@i <= length(@modes)) {
+  // extract the right name from the list and store in @display
+  @display: extract(@modes, @i);
+
+  // Begin each loop for a size
+  each(@sizes, {
+    .l2s-select-@{display}-@{key} {
+      display: @display !important;
+      @media screen and (min-width: @value) {
+        display: none !important;
+      }
+    }
+  });
+  .l2s-select(@modes, @i + 1);
 }
 
-.l2s-display-lg {
-	display: none !important;
-	@media screen and (min-width: 992px) {
-		display: block !important;
-	}
-}
-
-.l2s-display-xl {
-	display: none !important;
-	@media screen and (min-width: 1200px) {
-		display: block !important;
-	}
-}
-
-.l2s-select {
-	display: block;
-}
-
-.l2s-select-sm {
-	display: block;
-	@media screen and (min-width: 576px) {
-		display: none;
-	}
-}
-
-.l2s-select-md {
-	display: block;
-	@media screen and (min-width: 768px) {
-		display: none;
-	}
-}
-
-.l2s-select-lg {
-	display: block;
-	@media screen and (min-width: 992px) {
-		display: none;
-	}
-}
-
-.l2s-select-xl {
-	display: block;
-	@media screen and (min-width: 1200px) {
-		display: none;
-	}
-}
+.l2s-list(@modes);
+.l2s-select(@modes);

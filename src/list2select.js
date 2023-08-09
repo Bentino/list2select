@@ -7,7 +7,7 @@ var defaults = {
   tabSelector: '',
   toggleDisplayWidth: 'md',
   insertBefore: false,
-  placeAt: '',
+  placeIn: '',
   childSelector: 'li',
   customClass: ''
 };
@@ -39,11 +39,14 @@ $.fn.list2select = function(options){
     
       // Set state for prevent duplicate initialization
       var state = {'init':true};
+      var display = $(this).css('display');
+      var original_name = 'l2s-list-' + display + '-' + defaults.toggleDisplayWidth + ' ' + settings.customClass;
       $(this).data('l2s', state);
+      $(this).addClass(original_name);
     
       // Construct HTML Select element  
       var select = $('<select />', {
-        'class': 'l2s-select-' + defaults.toggleDisplayWidth + ' ' + settings.customClass
+        'class': 'l2s-select-' + display + '-' + defaults.toggleDisplayWidth + ' ' + settings.customClass
       });
       
       // Build an null option
@@ -89,21 +92,21 @@ $.fn.list2select = function(options){
       });
       
       if(settings.insertBefore) {
-        if(settings.placeAt) {
-          $(document).find(settings.placeAt).prepend(select);
+        if(settings.placeIn) {
+          $(document).find(settings.placeIn).prepend(select);
         } else {
           html_list.parent().prepend(select);
         }
       } else {
-        if(settings.placeAt) {
-          $(document).find(settings.placeAt).append(select);
+        if(settings.placeIn) {
+          $(document).find(settings.placeIn).append(select);
         } else {
           html_list.parent().append(select);
         }
       }
       
-      select.on('change', function() {
-      
+      select.on('change', function(e) {
+        e.preventDefault();
         if(settings.tabMode) {
           
           if($(this).val() != '') {
